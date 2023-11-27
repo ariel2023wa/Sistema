@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence version="2.2"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <!-- Define persistence unit -->
+    <persistence-unit name="JPA_PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <!-- database connection -->
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:mariadb://localhost/sistemaprueba" />
+            <property name="jakarta.persistence.jdbc.user" value="root" />
+            <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
+            <property name="jakarta.persistence.jdbc.password" value="" />
+
+            <!-- Imprimir y formatear las consultas en la consola -->
+            <property name="hibernate.format_sql" value="true" />
+
+            <!-- Configurar el dialecto de hibernate al de la base de datos -->
+            <property name="jakarta.persistence.jdbc.dialect" value="org.hibernate.dialect.MariaDBDialect" />
+            <!-- Accion para actualizar la base de datos segun las entidades del proyecto -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="update" />
+        </properties>
+    </persistence-unit>
+</persistence>
