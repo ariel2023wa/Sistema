@@ -5,6 +5,8 @@ import sistema.entities.*;
 import sistema.repositories.ClienteRepository;
 import sistema.service.Controladora;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -19,6 +21,15 @@ public class Menu {
         String opcion = scanner.nextLine();
 
         return opcion;
+    }
+
+    public static boolean validarFecha(String fecha) {
+        try {
+            LocalDate.parse(fecha);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
     }
 
     public static void menuPrincipal() {
@@ -205,7 +216,11 @@ public class Menu {
 
         boolean descripcionCargada = false;
 
-        boolean problemaCargado = true;
+        boolean problemaCargado = false;
+
+        boolean tecnicoCargado = false;
+
+        boolean fechacargada = false;
 
         Incidente incidente = new Incidente();
 
@@ -447,48 +462,109 @@ public class Menu {
                 HashMap<Integer, Tecnico> listaTecnicosMap = (HashMap<Integer, Tecnico>) listaTecnicos.stream()
                         .collect(Collectors.toMap(tecnico -> listaTecnicos.indexOf(tecnico) + 1, tecnico -> tecnico));
 
-                System.out.println(". Elija el tecnico para resolver el incidente");
-                System.out.println("");
-
-                listaTecnicosMap.forEach((clave, valor) -> System.out.println(clave + ". " + valor.getNombre()));
-
-                opcion = leer();
-
-                validar = opcion.matches("\\b(?:[1-9]\\d?|100)\\b");
-
-                if (!opcion.equals("0")) {
+                do {
 
 
-                    if (validar) {
+                    System.out.println(". Elija el tecnico para resolver el incidente (Ingrese 0 para cancelar)");
+                    System.out.println("");
 
-                        int num = Integer.parseInt(opcion);
+                    listaTecnicosMap.forEach((clave, valor) -> System.out.println(clave + ". " + valor.getNombre()));
 
-                        int cantServ = listaTecnicos.size();
+                    opcion = leer();
 
-                        if (num <= cantServ) {
+                    validar = opcion.matches("\\b(?:[1-9]\\d?|100)\\b");
 
-                            incidente.setTecnico(listaTecnicosMap.get(num));
+                    if (!opcion.equals("0")) {
+
+
+                        if (validar) {
+
+                            int num = Integer.parseInt(opcion);
+
+                            int cantServ = listaTecnicos.size();
+
+                            if (num <= cantServ) {
+
+                                incidente.setTecnico(listaTecnicosMap.get(num));
+
+                                tecnicoCargado = true;
+
+                                System.out.println("Tecnico cargado");
+
+                                break;
+
+                            } else {
+
+                                System.out.println("Ingreso un numero incorrecto");
+
+                            }
 
                         } else {
 
-                            System.out.println("Ingreso un numero incorrecto");
+                            System.out.println("Ingreso un valor incorrecto");
 
                         }
 
                     } else {
 
-                        System.out.println("Ingreso un valor incorrecto");
+                        System.out.println("Saliendo...");
 
+                        break;
                     }
 
-                }
-
-                System.out.println("Saliendo...");
-
-                break;
+                } while (true);
 
             }
 
+            if (tecnicoCargado) {
+
+                do {
+
+                    System.out.println("Ingrese una fecha de posible resolucion (Ingrese 0 para cancelar)");
+
+                    opcion = leer();
+
+                    if (!opcion.equals("0")) {
+
+                        if (validarFecha(opcion)) {
+
+                            incidente.setFechaPosResolucion(LocalDate.parse(opcion));
+
+                            fechacargada = true;
+
+                            System.out.println("Fecha cargada");
+
+                            break;
+
+                        } else {
+
+                            System.out.println("Ingreso una fecha incorrecta");
+
+                        }
+
+                    } else {
+
+                        System.out.println("Saliendo...");
+
+                        break;
+
+                    }
+
+
+
+
+                } while (true);
+
+            }
+
+            if (fechacargada) {
+
+
+
+
+                System.out.println("Informar al cliente que el incidente ha sido ingresado y su fecha de posible resolucion es: " + incidente.getFechaPosResolucion());
+
+            }
 
         } while (!opcion.equals("0"));
 

@@ -1,9 +1,6 @@
 package sistema.service;
 
-import sistema.entities.Cliente;
-import sistema.entities.Especialidad;
-import sistema.entities.Problema;
-import sistema.entities.Tecnico;
+import sistema.entities.*;
 import sistema.repositories.ControladoraPersistencia;
 
 import java.util.List;
@@ -46,6 +43,12 @@ public class Controladora {
 
         return contP.listarEspecialidades();
 
+    }
+
+    public void crearIncidente(Incidente incidente){
+
+        contP.crearIncidente(incidente);
+        
     }
 
 }

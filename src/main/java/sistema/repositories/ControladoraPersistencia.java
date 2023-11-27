@@ -1,9 +1,6 @@
 package sistema.repositories;
 
-import sistema.entities.Cliente;
-import sistema.entities.Especialidad;
-import sistema.entities.Problema;
-import sistema.entities.Tecnico;
+import sistema.entities.*;
 
 import java.util.List;
 
@@ -16,6 +13,8 @@ public class ControladoraPersistencia {
     TecnicoRepository tr = new TecnicoRepository();
 
     EspecialidadRepository er = new EspecialidadRepository();
+
+    IncidenteRepository ir = new IncidenteRepository();
 
     public void crearCliente(Cliente cliente){
 
@@ -51,6 +50,12 @@ public class ControladoraPersistencia {
     public List<Especialidad> listarEspecialidades(){
 
         return er.findEspecialidadEntities();
+
+    }
+
+    public void crearIncidente(Incidente incidente) {
+
+        ir.create(incidente);
 
     }
 
