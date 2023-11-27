@@ -44,7 +44,6 @@ public class Menu {
             System.out.println("3. Area RRHH");
             System.out.println("4. Administracion general");
             System.out.println("5. Salir");
-            System.out.print("Seleccione una opción: ");
 
             opcion = leer();
 
@@ -82,7 +81,6 @@ public class Menu {
             System.out.println("1. Reportar Incidente");
             System.out.println("2. Consultar Reportes");
             System.out.println("3. Atras");
-            System.out.print("Seleccione una opción: ");
 
             opcion = leer();
 
@@ -145,7 +143,6 @@ public class Menu {
             System.out.println("2. Modificacion de Tecnico");
             System.out.println("3. Baja de Tecnico");
             System.out.println("4. Atras");
-            System.out.print("Seleccione una opción: ");
 
             opcion = leer();
 
@@ -561,9 +558,11 @@ public class Menu {
 
                 controladora.crearIncidente(incidente);
 
+                System.out.println("Incidente cargado");
+
                 System.out.println("Informar al cliente que el incidente ha sido ingresado y su fecha de posible resolucion es: " + incidente.getFechaPosResolucion());
 
-                
+                opcion = "0";
 
             }
 
