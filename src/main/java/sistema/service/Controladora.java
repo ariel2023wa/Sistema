@@ -48,7 +48,7 @@ public class Controladora {
     public void crearIncidente(Incidente incidente){
 
         contP.crearIncidente(incidente);
-        
+
     }
 
 }

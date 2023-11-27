@@ -559,10 +559,11 @@ public class Menu {
 
             if (fechacargada) {
 
-
-
+                controladora.crearIncidente(incidente);
 
                 System.out.println("Informar al cliente que el incidente ha sido ingresado y su fecha de posible resolucion es: " + incidente.getFechaPosResolucion());
+
+                
 
             }
 
