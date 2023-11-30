@@ -1,16 +1,5 @@
 
-import com.mysql.cj.x.protobuf.MysqlxCrud;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import sistema.entities.Cliente;
-import sistema.entities.Servicio;
-import sistema.repositories.ClienteRepository;
-import sistema.repositories.ServicioRepository;
-import sistema.util.Menu;
-
-import java.util.List;
-import java.util.Scanner;
+import sistema.GestionMenu.Menu;
 
 public class Main {
 
@@ -36,7 +25,13 @@ public class Main {
 
         cr.create(cliente);
 */
-        Menu.menuPrincipal();
+        Menu mm = new Menu();
+
+        String menu = "Menu Principal";
+
+        do {
+            menu = (mm.generarMenu(menu));
+        }while(true);
 
     }
 }

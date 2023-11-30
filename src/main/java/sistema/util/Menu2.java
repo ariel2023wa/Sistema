@@ -1,8 +1,6 @@
 package sistema.util;
 
-import org.hibernate.Hibernate;
 import sistema.entities.*;
-import sistema.repositories.ClienteRepository;
 import sistema.service.Controladora;
 
 import java.time.LocalDate;
@@ -10,7 +8,7 @@ import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Menu {
+public class Menu2 {
 
     private static String leer() {
 
@@ -19,6 +17,9 @@ public class Menu {
         System.out.print("Seleccione una opción: ");
 
         String opcion = scanner.nextLine();
+
+        System.out.println("");
+        System.out.println("");
 
         return opcion;
     }
@@ -277,8 +278,6 @@ public class Menu {
 
                                         System.out.println("Servicio Cargado");
 
-                                        System.out.println(incidente.getServicio());
-
                                         servicioCargado = true;
 
                                         break;
@@ -436,7 +435,6 @@ public class Menu {
 
                         incidente.setProblemas(new ArrayList<>(problemaSet));
 
-                        incidente.getProblemas().stream().forEach(System.out::println);
 
                     }
 
