@@ -4,6 +4,7 @@ import org.checkerframework.checker.units.qual.C;
 import sistema.entities.Cliente;
 import sistema.entities.Problema;
 import sistema.entities.Servicio;
+import sistema.repositories.exceptions.NonexistentEntityException;
 import sistema.service.Controladora;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class GestionCliente {
 
             controladora.crearCliente(cliente);
 
-            System.out.println("Cliente " + cliente.getRazonSocial() + " creado");
+            System.out.println("El cliente " + cliente.getRazonSocial() + " fue creado");
 
         } else {
 
@@ -44,7 +45,7 @@ public class GestionCliente {
 
         do {
 
-            String opcion = leer("Ingrese la razon social del cliente (Ingrese 0 para cancelar)");
+            String opcion = leer("Ingrese la razon social del cliente (Ingrese 0 para cancelar): ");
 
             if (opcion.equals("0")) {
 
@@ -82,7 +83,7 @@ public class GestionCliente {
 
         do {
 
-            String opcion = leer("Ingrese el CUIT del cliente (Ingrese 0 para cancelar)");
+            String opcion = leer("Ingrese el CUIT del cliente (Ingrese 0 para cancelar): ");
 
             if (opcion.equals("0")) {
 
@@ -130,7 +131,7 @@ public class GestionCliente {
 
         do {
 
-            int opcion = imprimirValidarMenu(ServiciosNombres, "Seleccionar servicio");
+            int opcion = imprimirValidarMenu(ServiciosNombres, "Seleccionar servicio: ");
 
             if (ServiciosNombres.get(opcion).equals("Terminar")) {
 
@@ -161,7 +162,7 @@ public class GestionCliente {
 
             System.out.println("Servicios cargados");
 
-            cliente.getServicios().forEach(problema -> System.out.println(problema));
+            cliente.getServicios().forEach(servicio -> System.out.println(servicio.getNombre()));
 
         } else {
 
@@ -172,15 +173,134 @@ public class GestionCliente {
 
         System.out.println("");
         System.out.println("Terminando...");
+        System.out.println("");
 
         return flag;
 
     }
 
 
-    public void bajaCliente() {
+    public void bajaCliente() throws NonexistentEntityException {
+
+        do {
+
+            String opcion = leer("Ingrese el CUIT del cliente (Ingrese 0 para cancelar): ");
+
+            if (opcion.equals("0")) {
+
+                System.out.println("Cancelando...");
+
+                break;
+
+            }
+
+            if (validar(opcion, "\\d{11}")) {
+
+                cliente = controladora.buscarClienteCUIT(opcion);
+
+                if (cliente == null) {
+
+                    System.out.println("El cliente no fue encontrado");
+
+                } else {
+
+                    controladora.bajarCliente(cliente.getIdCliente());
+
+                    System.out.println("El cliente " + cliente.getRazonSocial() + " fue dado de baja");
+
+                    break;
+                }
+
+            } else {
+
+                System.out.println("CUIT invalido");
+
+            }
+
+        } while (true);
+
     }
 
     public void modificarCliente() {
+
+        boolean flag1 = false, flag2 = false, flag3 = false;
+
+        do {
+
+            String opcion = leer("Ingrese el CUIT del cliente (Ingrese 0 para cancelar): ");
+
+            if (opcion.equals("0")) {
+
+                System.out.println("Cancelando...");
+
+                break;
+
+            }
+
+            if (validar(opcion, "\\d{11}")) {
+
+                cliente = controladora.buscarClienteCUIT(opcion);
+
+                if (cliente == null) {
+
+                    System.out.println("El cliente no fue encontrado");
+
+                } else {
+
+                    do {
+
+                        System.out.println("Que desea modificar?");
+                        System.out.println();
+                        System.out.println("1. Cliente: " + cliente.getRazonSocial());
+                        System.out.println("2. CUIT: " + cliente.getCuit());
+                        System.out.println("3. Servicios: ");
+                        cliente.getServicios().forEach(servicio -> System.out.println(servicio.getNombre()));
+                        System.out.println("4. Terminar");
+
+                        opcion = leer();
+
+                        if (opcion.equals("4")) {
+
+                            break;
+
+                        }
+
+                        switch (opcion) {
+                            case "1":
+                                flag1 = clienteRazonSocial();
+                                break;
+                            case "2":
+                                flag2 = clienteCUIT();
+                                break;
+                            case "3":
+                                flag3 = clienteServicios();
+                                break;
+                            default:
+                                System.out.println("Opcion incorrecta");
+                        }
+                    }while (true);
+
+                    break;
+
+                }
+
+            } else {
+
+                System.out.println("CUIT invalido");
+
+            }
+
+        } while (true);
+
+        if (!flag1 && !flag2 && !flag3){
+
+            System.out.println("No se realizo ningun cambio");
+
+        } else {
+
+            System.out.println("Los cambios fueron guardados");
+
+        }
+        
     }
 }

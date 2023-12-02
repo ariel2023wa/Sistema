@@ -2,11 +2,12 @@
 import sistema.entities.Abierto;
 import sistema.entities.Incidente;
 import sistema.repositories.IncidenteRepository;
+import sistema.repositories.exceptions.NonexistentEntityException;
 import sistema.util.GestionMenu.Menu;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NonexistentEntityException {
 /*
         ServicioRepository sr = new ServicioRepository();
 

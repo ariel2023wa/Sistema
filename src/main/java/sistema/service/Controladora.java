@@ -2,6 +2,7 @@ package sistema.service;
 
 import sistema.entities.*;
 import sistema.repositories.ControladoraPersistencia;
+import sistema.repositories.exceptions.NonexistentEntityException;
 
 import java.util.List;
 
@@ -54,6 +55,12 @@ public class Controladora {
     public List<Servicio> listarServicios() {
 
         return contP.listarServicios();
+
+    }
+
+    public void bajarCliente(int id) throws NonexistentEntityException {
+
+        contP.bajarCliente(id);
 
     }
 }

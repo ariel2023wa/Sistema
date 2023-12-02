@@ -1,5 +1,7 @@
 package sistema.util.GestionMenu;
 
+import sistema.repositories.exceptions.NonexistentEntityException;
+
 import static sistema.util.UtilidadesGenerales.*;
 
 public class Menu {
@@ -8,7 +10,7 @@ public class Menu {
     private GestionCliente gc = new GestionCliente();
     private GestionTecnico gt = new GestionTecnico();
 
-    public void generarMenu() {
+    public void generarMenu() throws NonexistentEntityException {
 
         int opcion;
 
@@ -47,7 +49,7 @@ public class Menu {
 
     }
 
-    public String gestionOpciones(String menuSeleccionado, String menu) {
+    public String gestionOpciones(String menuSeleccionado, String menu) throws NonexistentEntityException {
 
         String devolucion = menu;
 

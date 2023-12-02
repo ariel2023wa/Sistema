@@ -1,6 +1,7 @@
 package sistema.repositories;
 
 import sistema.entities.*;
+import sistema.repositories.exceptions.NonexistentEntityException;
 
 import java.util.List;
 
@@ -64,6 +65,12 @@ public class ControladoraPersistencia {
     public List<Servicio> listarServicios() {
 
         return sr.findServicioEntities();
+
+    }
+
+    public void bajarCliente(int id) throws NonexistentEntityException {
+
+        cr.destroy(id);
 
     }
 }
