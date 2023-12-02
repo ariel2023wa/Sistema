@@ -27,6 +27,14 @@ public class Menu {
             menuSeleccionado = lista.obtenerLista().get(menu).get(opcion);
 
 
+            if (menuSeleccionado.equals("Salir")){
+
+                System.out.println("Saliendo...");
+
+                break;
+
+            }
+
             if (menuSeleccionado.contains("Volver a ")) {
                 menuSeleccionado = menuSeleccionado.replace("Volver a ", "");
             }
@@ -95,11 +103,6 @@ public class Menu {
 
             case "Modificar tecnico":
                 gt.modificarTecnico();
-                break;
-
-            case "Salir":
-                System.out.println("Saliendo del sistema...");
-                System.exit(0);
                 break;
 
             default:

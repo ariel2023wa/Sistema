@@ -16,6 +16,8 @@ public class ControladoraPersistencia {
 
     IncidenteRepository ir = new IncidenteRepository();
 
+    ServicioRepository sr = new ServicioRepository();
+
     public void crearCliente(Cliente cliente){
 
         cr.create(cliente);
@@ -59,4 +61,9 @@ public class ControladoraPersistencia {
 
     }
 
+    public List<Servicio> listarServicios() {
+
+        return sr.findServicioEntities();
+
+    }
 }

@@ -51,4 +51,9 @@ public class Controladora {
 
     }
 
+    public List<Servicio> listarServicios() {
+
+        return contP.listarServicios();
+
+    }
 }
