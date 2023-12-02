@@ -28,7 +28,7 @@ public class Incidente implements Serializable {
     @JoinColumn(name = "idTecnico")
     private Tecnico tecnico;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "incidenteproblema",
             joinColumns = @JoinColumn(name = "idIncidente"),
@@ -36,8 +36,7 @@ public class Incidente implements Serializable {
     )
     private List<Problema> problemas;
 
-    @Basic
-    private String Descripcion;
+    private String descripcion;
 
     private LocalDate fechaIngreso;
 
@@ -45,8 +44,8 @@ public class Incidente implements Serializable {
 
     private int horasEstimadas;
 
-    private boolean resuelto;
-
-    private boolean estado;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "estado")
+    private Estado estado;
 
 }
