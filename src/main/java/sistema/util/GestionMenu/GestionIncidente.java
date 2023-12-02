@@ -15,6 +15,8 @@ public class GestionIncidente {
 
     private Controladora contr = new Controladora();
 
+    private boolean fecha = false;
+
     private boolean clienteNull() {
         return incidente.getCliente() == null;
     }
@@ -33,10 +35,6 @@ public class GestionIncidente {
 
     private boolean tecnicoNull() {
         return incidente.getTecnico() == null;
-    }
-
-    private boolean fechaNull() {
-        return incidente.getFechaIngreso() == null;
     }
 
     public void chequearCliente() {
@@ -301,7 +299,7 @@ public class GestionIncidente {
 
     public void chequearFecha() {
 
-        if (fechaNull()) {
+        if (!fecha) {
 
             ingresarFechaResolucion();
 
@@ -331,6 +329,8 @@ public class GestionIncidente {
 
                 incidente.setFechaPosResolucion(LocalDate.parse(opcion));
 
+                fecha = true;
+
                 System.out.println("Fecha agregada");
 
                 break;
@@ -346,9 +346,10 @@ public class GestionIncidente {
 
     public void chequearIncidente() {
 
-        if (!clienteNull() && !servicioNull() && !descNull() && !problemaNull() && !tecnicoNull() && !fechaNull()) {
+        if (!clienteNull() && !servicioNull() && !descNull() && !problemaNull() && !tecnicoNull() && fecha) {
 
             confirmarIncidente();
+
 
         } else {
 
@@ -363,6 +364,10 @@ public class GestionIncidente {
         incidente.setEstado(new Abierto());
 
         contr.crearIncidente(incidente);
+
+        System.out.println("Incidente creado");
+
+        incidente = new Incidente();
 
     }
 }

@@ -24,7 +24,7 @@ public class Incidente implements Serializable {
     @JoinColumn(name = "idServicio")
     private Servicio servicio;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "idTecnico")
     private Tecnico tecnico;
 

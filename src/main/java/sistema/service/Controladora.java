@@ -63,4 +63,22 @@ public class Controladora {
         contP.bajarCliente(id);
 
     }
+
+    public Tecnico buscarTecnico(int id) {
+
+        return contP.buscarTecnico(id);
+
+    }
+
+    public void crearTecnico(Tecnico tecnico) {
+
+        contP.crearTecnico(tecnico);
+
+    }
+
+    public Tecnico buscarTecnicoPorLegajo(String nroLegajo) {
+
+        return contP.buscarTecnicoPorLegajo(nroLegajo);
+
+    }
 }

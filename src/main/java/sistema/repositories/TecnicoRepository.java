@@ -140,6 +140,20 @@ public class TecnicoRepository implements Serializable {
         }
     }
 
+    public Tecnico findTecnicoByLegajo(String nroLegajo) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Tecnico> query = em.createQuery(
+                    "SELECT t FROM Tecnico t WHERE t.nroLegajo = :nroLegajo", Tecnico.class
+            );
+            query.setParameter("nroLegajo", nroLegajo);
+            return query.getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+
+
 }
 
 

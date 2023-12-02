@@ -250,7 +250,7 @@ public class GestionCliente {
                     do {
 
                         System.out.println("Que desea modificar?");
-                        System.out.println();
+                        System.out.println("");
                         System.out.println("1. Cliente: " + cliente.getRazonSocial());
                         System.out.println("2. CUIT: " + cliente.getCuit());
                         System.out.println("3. Servicios: ");
@@ -301,6 +301,6 @@ public class GestionCliente {
             System.out.println("Los cambios fueron guardados");
 
         }
-        
+
     }
 }

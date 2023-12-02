@@ -37,6 +37,10 @@ public class Menu {
 
             }
 
+            if (menuSeleccionado.equals("Volver a Mesa de ayuda")) {
+                gi = new GestionIncidente();
+            }
+
             if (menuSeleccionado.contains("Volver a ")) {
                 menuSeleccionado = menuSeleccionado.replace("Volver a ", "");
             }

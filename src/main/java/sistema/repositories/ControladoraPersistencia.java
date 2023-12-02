@@ -73,4 +73,22 @@ public class ControladoraPersistencia {
         cr.destroy(id);
 
     }
+
+    public Tecnico buscarTecnico(int id) {
+
+        return tr.findTecnico(id);
+
+    }
+
+    public void crearTecnico(Tecnico tecnico) {
+
+        tr.create(tecnico);
+
+    }
+
+    public Tecnico buscarTecnicoPorLegajo(String nroLegajo) {
+
+        return tr.findTecnicoByLegajo(nroLegajo);
+
+    }
 }

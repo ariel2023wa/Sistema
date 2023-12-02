@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
@@ -18,6 +19,10 @@ public class Tecnico implements Serializable {
     @JoinColumn(name = "idEspecialidad")
     private Especialidad especialidad;
 
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tecnico", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Incidente> incidentes;
+
     @ManyToOne
     @JoinColumn(name = "idMedioNotificacion")
     private MedioNotificacion medioNotificacion;
@@ -25,6 +30,6 @@ public class Tecnico implements Serializable {
     @Basic
     private String nombre;
 
-    private boolean estado;
+    private String nroLegajo;
 
 }
