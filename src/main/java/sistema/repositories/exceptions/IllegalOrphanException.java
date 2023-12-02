@@ -1,4 +1,4 @@
-package sistema.exceptions;
+package sistema.repositories.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

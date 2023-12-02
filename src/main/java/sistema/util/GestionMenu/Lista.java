@@ -1,4 +1,4 @@
-package sistema.GestionMenu;
+package sistema.util.GestionMenu;
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -51,7 +51,7 @@ public class Lista {
                 {"Menu Principal", "Mesa de ayuda", "Area comercial", "Area RRHH", "Salir"},
                 {"Mesa de ayuda", "Ingresar incidente", "Volver a Menu Principal"},
                 {"Ingresar incidente", "Buscar Cliente", "Seleccionar Servicio", "Ingresar descripcion", "Seleccionar problema",
-                        "Seleccionar Tecnico", "Ingesar fecha de resolucion","Volver a Mesa de ayuda"},
+                        "Seleccionar Tecnico", "Ingesar fecha de resolucion","Confirmar incidente", "Volver a Mesa de ayuda"},
                 {"Area comercial", "Alta de cliente", "Baja de cliente", "Modificar cliente", "Volver a Menu Principal"},
                 {"Area RRHH", "Gestion de tecnicos", "Emision de reportes", "Volver a Menu Principal"},
                 {"Gestion de tecnicos", "Alta de tecnico", "Baja de tecnico", "Modificar tecnico", "Volver a Area RRHH"}

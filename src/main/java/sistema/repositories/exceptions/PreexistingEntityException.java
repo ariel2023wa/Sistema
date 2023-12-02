@@ -1,4 +1,4 @@
-package sistema.exceptions;
+package sistema.repositories.exceptions;
 
 public class PreexistingEntityException extends Exception {
     public PreexistingEntityException(String message, Throwable cause) {

@@ -1,10 +1,20 @@
 package sistema.util;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.Calendar;
 import java.util.List;
-import java.util.TreeMap;
 import java.util.stream.IntStream;
 
-public class MetodosUtiles {
+public class UtilidadesGenerales {
+    public static boolean validarFecha(String fecha) {
+        try {
+            LocalDate.parse(fecha);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
 
     public static boolean validar(String opcion, String val) {
 
@@ -35,11 +45,11 @@ public class MetodosUtiles {
 
     }
 
-    public static String imprimirValidarMenu(List<String> lista, String menu){
-
-        int num;
+    public static int imprimirValidarMenu(List<String> lista, String menu){
 
         String opcion;
+
+        int opcionInt;
 
         do {
 
@@ -50,13 +60,23 @@ public class MetodosUtiles {
             IntStream.range(0, lista.size())
                     .forEach(i -> System.out.println((i + 1) + ". " + lista.get(i)));
 
-            num = lista.size();
-
             opcion = leer();
 
-        } while (!validar(opcion, num));
+            if (validar(opcion, lista.size())){
 
-        return opcion;
+                break;
+
+            } else {
+
+                System.out.println("Opcion incorrecta");
+
+            }
+
+        } while (true);
+
+        opcionInt = Integer.parseInt(opcion) - 1;
+
+        return opcionInt;
 
     }
 

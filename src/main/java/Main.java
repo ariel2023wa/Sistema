@@ -1,9 +1,8 @@
 
-import sistema.GestionMenu.Menu;
 import sistema.entities.Abierto;
-import sistema.entities.Estado;
 import sistema.entities.Incidente;
 import sistema.repositories.IncidenteRepository;
+import sistema.util.GestionMenu.Menu;
 
 public class Main {
 
@@ -29,33 +28,9 @@ public class Main {
 
         cr.create(cliente);
 */
-      /*  Menu mm = new Menu();
+        Menu mm = new Menu();
 
-        String menu = "Menu Principal";
-
-        do {
-            menu = (mm.generarMenu(menu));
-        }while(true);*/
-
-        Incidente incidente = new Incidente();
-
-        incidente.setDescripcion("aaaaa");
-        incidente.setEstado(new Abierto());
-        incidente.getEstado().abrir(incidente);
-
-        IncidenteRepository ir = new IncidenteRepository();
-
-        //ir.create(incidente);
-
-        //System.out.println(incidente+"creado");
-
-        Incidente incidente2 = new Incidente();
-
-        incidente2 = ir.findIncidente(4);
-
-        incidente2.getEstado().cerrar(incidente2);
-
-        System.out.println(incidente2);
+        mm.generarMenu();
 
     }
 }

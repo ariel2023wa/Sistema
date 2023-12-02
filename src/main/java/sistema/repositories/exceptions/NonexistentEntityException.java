@@ -1,4 +1,4 @@
-package sistema.exceptions;
+package sistema.repositories.exceptions;
 
 public class NonexistentEntityException extends Exception {
     public NonexistentEntityException(String message, Throwable cause) {

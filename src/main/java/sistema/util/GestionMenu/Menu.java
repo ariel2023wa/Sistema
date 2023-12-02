@@ -1,6 +1,6 @@
-package sistema.GestionMenu;
+package sistema.util.GestionMenu;
 
-import static sistema.util.MetodosUtiles.*;
+import static sistema.util.UtilidadesGenerales.*;
 
 public class Menu {
 
@@ -8,9 +8,11 @@ public class Menu {
     private GestionCliente gc = new GestionCliente();
     private GestionTecnico gt = new GestionTecnico();
 
-    public String generarMenu(String menu) {
+    public void generarMenu() {
 
-        String opcion;
+        int opcion;
+
+        String menu = "Menu Principal";
 
         String menuSeleccionado = "";
 
@@ -18,18 +20,22 @@ public class Menu {
 
         lista.cargarOpciones();
 
-        opcion = imprimirValidarMenu(lista.obtenerLista().get(menu), menu);
+        do {
 
-        menuSeleccionado = lista.obtenerLista().get(menu).get(Integer.parseInt(opcion)-1);
+            opcion = imprimirValidarMenu(lista.obtenerLista().get(menu), menu);
+
+            menuSeleccionado = lista.obtenerLista().get(menu).get(opcion);
 
 
-        if (menuSeleccionado.contains("Volver a ")) {
-            menuSeleccionado = menuSeleccionado.replace("Volver a ", "");
-        }
+            if (menuSeleccionado.contains("Volver a ")) {
+                menuSeleccionado = menuSeleccionado.replace("Volver a ", "");
+            }
 
-        menuSeleccionado = gestionOpciones(menuSeleccionado, menu);
+            menuSeleccionado = gestionOpciones(menuSeleccionado, menu);
 
-        return menuSeleccionado;
+            menu = menuSeleccionado;
+
+        }while(true);
 
     }
 
@@ -56,11 +62,15 @@ public class Menu {
                 break;
 
             case "Seleccionar Tecnico":
-                gi.seleccionarTecnico();
+                gi.chequearTecnico();
                 break;
 
             case "Ingesar fecha de resolucion":
-                gi.ingresarFechaResolucion();
+                gi.chequearFecha();
+                break;
+
+            case "Confirmar incidente":
+                gi.chequearIncidente();
                 break;
 
             case "Alta de cliente":

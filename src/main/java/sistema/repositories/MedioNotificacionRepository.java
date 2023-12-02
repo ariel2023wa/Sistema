@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import sistema.entities.MedioNotificacion;
-import sistema.exceptions.NonexistentEntityException;
+import sistema.repositories.exceptions.NonexistentEntityException;
 
 import java.util.List;
 

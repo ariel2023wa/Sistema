@@ -3,10 +3,8 @@ package sistema.repositories;
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.*;
 import sistema.entities.Especialidad;
-import sistema.entities.EspecialidadProblema;
-import sistema.entities.Problema;
 import sistema.entities.Tecnico;
-import sistema.exceptions.NonexistentEntityException;
+import sistema.repositories.exceptions.NonexistentEntityException;
 
 import java.io.Serializable;
 import java.util.List;

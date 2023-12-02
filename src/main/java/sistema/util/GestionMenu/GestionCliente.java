@@ -1,4 +1,4 @@
-package sistema.GestionMenu;
+package sistema.util.GestionMenu;
 
 import sistema.entities.Cliente;
 
