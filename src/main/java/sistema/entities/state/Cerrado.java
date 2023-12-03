@@ -6,6 +6,7 @@ import sistema.entities.state.Abierto;
 import sistema.entities.state.Estado;
 
 @Entity
+@DiscriminatorValue("Cerrado")
 public class Cerrado extends Estado {
 
     public Cerrado() {

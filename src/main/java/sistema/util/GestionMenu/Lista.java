@@ -15,7 +15,7 @@ public class Lista {
         });
 
     }
-    
+
     public void cargarOpciones() {
 
         String[][] aux = {

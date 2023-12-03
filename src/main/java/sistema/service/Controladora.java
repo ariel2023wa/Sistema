@@ -1,6 +1,7 @@
 package sistema.service;
 
 import sistema.entities.*;
+import sistema.entities.state.Abierto;
 import sistema.repositories.ControladoraPersistencia;
 import sistema.repositories.exceptions.NonexistentEntityException;
 
@@ -105,4 +106,11 @@ public class Controladora {
         return contP.listarTecnicos();
 
     }
+
+    public void crearAbierto(Abierto abierto){
+
+        contP.crearAbierto(abierto);
+
+    }
+
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import sistema.entities.Incidente;
 
 @Entity
+@DiscriminatorValue("Abierto")
 public class Abierto extends Estado {
     public Abierto() {
         super.setNombre("Abierto");

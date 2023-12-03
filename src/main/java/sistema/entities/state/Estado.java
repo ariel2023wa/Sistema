@@ -29,9 +29,7 @@ public abstract class Estado {
 
     @Override
     public String toString() {
-        return "Estado{" +
-                "descripcion='" + nombre + '\'' +
-                '}';
+        return nombre;
     }
 
 }

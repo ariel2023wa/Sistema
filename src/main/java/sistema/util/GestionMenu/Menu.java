@@ -1,6 +1,8 @@
 package sistema.util.GestionMenu;
 
+import sistema.entities.state.Abierto;
 import sistema.repositories.exceptions.NonexistentEntityException;
+import sistema.service.Controladora;
 
 import static sistema.util.UtilidadesGenerales.*;
 
@@ -11,6 +13,8 @@ public class Menu {
     private GestionTecnico gt = new GestionTecnico();
 
     public void generarMenu() throws Exception {
+
+        crearEstados();
 
         int opcion;
 
@@ -50,6 +54,18 @@ public class Menu {
             menu = menuSeleccionado;
 
         }while(true);
+
+    }
+
+    private void crearEstados() {
+
+        Controladora controladora = new Controladora();
+
+        Abierto abierto = new Abierto();
+
+        controladora.crearAbierto(abierto);
+
+        
 
     }
 
