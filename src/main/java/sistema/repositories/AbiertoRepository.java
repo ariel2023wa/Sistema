@@ -27,9 +27,9 @@ public class AbiertoRepository implements Serializable {
     public void create(Abierto abierto) {
         EntityManager em = null;
         try {
+            em = getEntityManager();
             Abierto abiertoEx = em.find(Abierto.class, abierto.getNombre());
             if (abiertoEx==null){
-                em = getEntityManager();
                 em.getTransaction().begin();
                 em.persist(abierto);
                 em.getTransaction().commit();

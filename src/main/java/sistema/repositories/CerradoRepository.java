@@ -27,9 +27,10 @@ public class CerradoRepository implements Serializable {
     public void create(Cerrado cerrado) {
         EntityManager em = null;
         try {
+            em = getEntityManager();
             Cerrado cerradoEx = em.find(Cerrado.class, cerrado.getNombre());
             if (cerradoEx==null){
-                em = getEntityManager();
+
                 em.getTransaction().begin();
                 em.persist(cerrado);
                 em.getTransaction().commit();
