@@ -108,4 +108,10 @@ public class ControladoraPersistencia {
         cr.edit(cliente);
 
     }
+
+    public List<Tecnico> listarTecnicos() {
+
+        return tr.findTecnicoEntities();
+
+    }
 }

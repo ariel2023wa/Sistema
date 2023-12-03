@@ -111,6 +111,10 @@ public class Menu {
                 gt.modificarTecnico();
                 break;
 
+            case "Emision de reportes":
+                gt.emitirReportes();
+                break;
+
             default:
                 devolucion = menuSeleccionado;
         }

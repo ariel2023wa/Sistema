@@ -1,8 +1,4 @@
 
-import sistema.entities.Abierto;
-import sistema.entities.Incidente;
-import sistema.repositories.IncidenteRepository;
-import sistema.repositories.exceptions.NonexistentEntityException;
 import sistema.util.GestionMenu.Menu;
 
 public class Main {

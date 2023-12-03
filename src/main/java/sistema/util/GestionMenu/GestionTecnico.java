@@ -251,7 +251,7 @@ public class GestionTecnico {
                             default:
                                 System.out.println("Opcion incorrecta");
                         }
-                    }while (true);
+                    } while (true);
 
                     break;
 
@@ -265,8 +265,8 @@ public class GestionTecnico {
 
         } while (true);
 
-        if (!flag1 && !flag2 && !flag3){
-            
+        if (!flag1 && !flag2 && !flag3) {
+
             System.out.println("No se realizo ningun cambio");
 
         } else {
@@ -278,6 +278,32 @@ public class GestionTecnico {
         }
 
         tecnico = new Tecnico();
+
+    }
+
+    public void emitirReportes() {
+
+        List<Tecnico> listaTecnicos = controladora.listarTecnicos();
+
+        List<String> listaTecnicosString = listaTecnicos.stream()
+                .map(Tecnico::getNombre)
+                .collect(Collectors.toList());
+
+        listaTecnicosString.add("Cancelar");
+
+        int opcion = imprimirValidarMenu(listaTecnicosString, "Lista Tecnicos");
+
+        if (listaTecnicosString.get(opcion).equals("Cancelar")) {
+
+            System.out.println("Cancelando...");
+
+        } else {
+
+            listaTecnicos.get(opcion).getIncidentes().forEach(incidente -> System.out.println(incidente + "\n"));
+
+            leer("Ingrese enter para continuar");
+
+        }
 
     }
 }

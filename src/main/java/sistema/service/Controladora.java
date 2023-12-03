@@ -99,4 +99,10 @@ public class Controladora {
         contP.modificarCliente(cliente);
 
     }
+
+    public List<Tecnico> listarTecnicos() {
+
+        return contP.listarTecnicos();
+
+    }
 }

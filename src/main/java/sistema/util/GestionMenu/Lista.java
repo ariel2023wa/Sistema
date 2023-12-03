@@ -7,33 +7,6 @@ public class Lista {
 
     private String[][] opciones;
 
-    public void cargarLista2(String[][] menu) {
-
-        String menuPrincipal = "";
-
-        for (int fila = 0; fila < menu.length; fila++) {
-
-            for (int columna = 0; columna < menu[fila].length; columna++) {
-
-                if (columna == 0) {
-
-                    menuPrincipal = menu[fila][columna];
-
-                    listaMenuTM.put(menuPrincipal, new ArrayList<>());
-
-                }
-
-                if (columna >= 1) {
-
-                    listaMenuTM.get(menuPrincipal).add(menu[fila][columna]);
-
-                }
-            }
-
-        }
-
-    }
-
     public void cargarLista(String[][] menu) {
         Arrays.stream(menu).forEach(fila -> {
             String menuPrincipal = fila[0];
@@ -42,8 +15,7 @@ public class Lista {
         });
 
     }
-
-
+    
     public void cargarOpciones() {
 
         String[][] aux = {

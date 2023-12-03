@@ -1,7 +1,8 @@
-package sistema.entities;
+package sistema.entities.state;
 
 
 import jakarta.persistence.*;
+import sistema.entities.Incidente;
 
 @Entity
 @Inheritance

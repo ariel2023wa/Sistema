@@ -2,6 +2,7 @@ package sistema.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import sistema.entities.state.Estado;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -47,5 +48,28 @@ public class Incidente implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "estado")
     private Estado estado;
+
+    @Override
+    public String toString() {
+        StringBuilder problemasStr = new StringBuilder("[");
+        problemas.forEach(problema -> problemasStr.append(problema.getTipoProblema()).append(", "));
+        if (problemasStr.length() > 1) {
+            problemasStr.delete(problemasStr.length() - 2, problemasStr.length());  // Elimina la última coma y espacio
+        }
+        problemasStr.append("]");
+
+        return "Incidente{" +
+                "idIncidente=" + idIncidente +
+                ", cliente=" + cliente.getRazonSocial() +
+                ", servicio=" + servicio.getNombre() +
+                ", tecnico=" + tecnico.getNombre() +
+                ", problemas=" + problemasStr.toString() +
+                ", descripcion='" + descripcion + '\'' +
+                ", fechaIngreso=" + fechaIngreso +
+                ", fechaPosResolucion=" + fechaPosResolucion +
+                ", horasEstimadas=" + horasEstimadas +
+                ", estado=" + estado +
+                '}';
+    }
 
 }

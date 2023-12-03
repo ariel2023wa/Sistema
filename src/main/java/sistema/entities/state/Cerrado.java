@@ -1,6 +1,9 @@
-package sistema.entities;
+package sistema.entities.state;
 
 import jakarta.persistence.*;
+import sistema.entities.Incidente;
+import sistema.entities.state.Abierto;
+import sistema.entities.state.Estado;
 
 @Entity
 public class Cerrado extends Estado {
