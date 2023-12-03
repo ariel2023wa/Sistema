@@ -91,4 +91,21 @@ public class ControladoraPersistencia {
         return tr.findTecnicoByLegajo(nroLegajo);
 
     }
+
+    public void bajarTecnico(int id) throws NonexistentEntityException {
+
+        tr.destroy(id);
+    }
+
+    public void modificarTecnico(Tecnico tecnico) throws Exception {
+
+        tr.edit(tecnico);
+
+    }
+
+    public void modificarCliente(Cliente cliente) throws Exception {
+
+        cr.edit(cliente);
+
+    }
 }

@@ -10,7 +10,7 @@ public class Menu {
     private GestionCliente gc = new GestionCliente();
     private GestionTecnico gt = new GestionTecnico();
 
-    public void generarMenu() throws NonexistentEntityException {
+    public void generarMenu() throws Exception {
 
         int opcion;
 
@@ -53,7 +53,7 @@ public class Menu {
 
     }
 
-    public String gestionOpciones(String menuSeleccionado, String menu) throws NonexistentEntityException {
+    public String gestionOpciones(String menuSeleccionado, String menu) throws Exception {
 
         String devolucion = menu;
 

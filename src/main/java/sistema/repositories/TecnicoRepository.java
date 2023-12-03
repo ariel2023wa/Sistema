@@ -147,7 +147,12 @@ public class TecnicoRepository implements Serializable {
                     "SELECT t FROM Tecnico t WHERE t.nroLegajo = :nroLegajo", Tecnico.class
             );
             query.setParameter("nroLegajo", nroLegajo);
-            return query.getSingleResult();
+
+            try {
+                return query.getSingleResult();
+            } catch (NoResultException e) {
+                return null;
+            }
         } finally {
             em.close();
         }

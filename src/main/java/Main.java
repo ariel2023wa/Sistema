@@ -7,7 +7,7 @@ import sistema.util.GestionMenu.Menu;
 
 public class Main {
 
-    public static void main(String[] args) throws NonexistentEntityException {
+    public static void main(String[] args) throws Exception {
 /*
         ServicioRepository sr = new ServicioRepository();
 

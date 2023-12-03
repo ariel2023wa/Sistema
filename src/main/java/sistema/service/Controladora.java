@@ -81,4 +81,22 @@ public class Controladora {
         return contP.buscarTecnicoPorLegajo(nroLegajo);
 
     }
+
+    public void bajarTecnico(int id) throws NonexistentEntityException {
+
+        contP.bajarTecnico(id);
+
+    }
+
+    public void modificarTecnico(Tecnico tecnico) throws Exception {
+
+        contP.modificarTecnico(tecnico);
+
+    }
+
+    public void modificarCliente(Cliente cliente) throws Exception {
+
+        contP.modificarCliente(cliente);
+
+    }
 }

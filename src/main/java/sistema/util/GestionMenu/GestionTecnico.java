@@ -3,6 +3,7 @@ package sistema.util.GestionMenu;
 import sistema.entities.Especialidad;
 import sistema.entities.Servicio;
 import sistema.entities.Tecnico;
+import sistema.repositories.exceptions.NonexistentEntityException;
 import sistema.service.Controladora;
 
 import java.util.List;
@@ -22,7 +23,15 @@ public class GestionTecnico {
 
             controladora.crearTecnico(tecnico);
 
+            System.out.println("Tecnico " + tecnico.getNombre() + " creado");
+
+        } else {
+
+            System.out.println("El tecnico no fue creado");
+
         }
+
+        tecnico = new Tecnico();
 
     }
 
@@ -143,10 +152,132 @@ public class GestionTecnico {
 
     }
 
+    public void bajaTecnico() throws NonexistentEntityException {
 
-    public void bajaTecnico() {
+        do {
+
+            String opcion = leer("Ingrese el numero de legajo del tecnico (Ingrese 0 para cancelar): ");
+
+            if (opcion.equals("0")) {
+
+                System.out.println("Cancelando...");
+
+                break;
+
+            }
+
+            if (validar(opcion, "^\\d+$")) {
+
+                tecnico = controladora.buscarTecnicoPorLegajo(opcion);
+
+                if (tecnico == null) {
+
+                    System.out.println("El tecnico no fue encontrado");
+
+                } else {
+
+                    controladora.bajarTecnico(tecnico.getIdTecnico());
+
+                    System.out.println("El tecnico " + tecnico.getNombre() + " fue dado de baja");
+
+                    tecnico = new Tecnico();
+
+                    break;
+                }
+
+            } else {
+
+                System.out.println("Numero legajo invalido");
+
+            }
+
+        } while (true);
+
     }
 
-    public void modificarTecnico() {
+    public void modificarTecnico() throws Exception {
+
+        boolean flag1 = false, flag2 = false, flag3 = false;
+
+        do {
+
+            String opcion = leer("Ingrese el numero de legajo del tecnico (Ingrese 0 para cancelar): ");
+
+            if (opcion.equals("0")) {
+
+                System.out.println("Cancelando...");
+
+                break;
+
+            }
+
+            if (validar(opcion, "^\\d+$")) {
+
+                tecnico = controladora.buscarTecnicoPorLegajo(opcion);
+
+                if (tecnico == null) {
+
+                    System.out.println("El tecnico no fue encontrado");
+
+                } else {
+
+                    do {
+
+                        System.out.println("Que desea modificar?");
+                        System.out.println("");
+                        System.out.println("1. Tecnico: " + tecnico.getNombre());
+                        System.out.println("2. Numero Legajo: " + tecnico.getNroLegajo());
+                        System.out.println("3. Especialidad: " + tecnico.getEspecialidad().getDescripcion());
+                        System.out.println("4. Terminar");
+
+                        opcion = leer();
+
+                        if (opcion.equals("4")) {
+
+                            break;
+
+                        }
+
+                        switch (opcion) {
+                            case "1":
+                                flag1 = tecnicoNombre();
+                                break;
+                            case "2":
+                                flag2 = tecnicoLegajo();
+                                break;
+                            case "3":
+                                flag3 = tecnicoEspecialidad();
+                                break;
+                            default:
+                                System.out.println("Opcion incorrecta");
+                        }
+                    }while (true);
+
+                    break;
+
+                }
+
+            } else {
+
+                System.out.println("Numero legajo invalido");
+
+            }
+
+        } while (true);
+
+        if (!flag1 && !flag2 && !flag3){
+            
+            System.out.println("No se realizo ningun cambio");
+
+        } else {
+
+            controladora.modificarTecnico(tecnico);
+
+            System.out.println("Los cambios fueron guardados");
+
+        }
+
+        tecnico = new Tecnico();
+
     }
 }

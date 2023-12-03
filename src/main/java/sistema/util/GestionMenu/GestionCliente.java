@@ -221,7 +221,7 @@ public class GestionCliente {
 
     }
 
-    public void modificarCliente() {
+    public void modificarCliente() throws Exception {
 
         boolean flag1 = false, flag2 = false, flag3 = false;
 
@@ -297,6 +297,8 @@ public class GestionCliente {
             System.out.println("No se realizo ningun cambio");
 
         } else {
+
+            controladora.modificarCliente(cliente);
 
             System.out.println("Los cambios fueron guardados");
 
