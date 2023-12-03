@@ -2,6 +2,7 @@ package sistema.repositories;
 
 import sistema.entities.*;
 import sistema.entities.state.Abierto;
+import sistema.entities.state.Cerrado;
 import sistema.repositories.exceptions.NonexistentEntityException;
 
 import java.util.List;
@@ -21,6 +22,8 @@ public class ControladoraPersistencia {
     ServicioRepository sr = new ServicioRepository();
 
     AbiertoRepository ar = new AbiertoRepository();
+
+    CerradoRepository cer = new CerradoRepository();
 
     public void crearCliente(Cliente cliente){
 
@@ -121,6 +124,12 @@ public class ControladoraPersistencia {
     public void crearAbierto(Abierto abierto){
 
         ar.create(abierto);
+
+    }
+
+    public void crearCerrado(Cerrado cerrado){
+
+        cer.create(cerrado);
 
     }
 

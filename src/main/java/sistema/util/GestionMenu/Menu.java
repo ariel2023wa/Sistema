@@ -1,6 +1,7 @@
 package sistema.util.GestionMenu;
 
 import sistema.entities.state.Abierto;
+import sistema.entities.state.Cerrado;
 import sistema.repositories.exceptions.NonexistentEntityException;
 import sistema.service.Controladora;
 
@@ -63,9 +64,11 @@ public class Menu {
 
         Abierto abierto = new Abierto();
 
+        Cerrado cerrado = new Cerrado();
+
         controladora.crearAbierto(abierto);
 
-        
+        controladora.crearCerrado(cerrado);
 
     }
 
